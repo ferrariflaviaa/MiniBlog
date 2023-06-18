@@ -57,6 +57,9 @@ export const NavBar = () => {
             Sobre
           </NavLink>
         </li>
+        {user && (
+          <li onClick={logout}>Sair</li>
+        )}
       </ul>
     </nav>
   )
