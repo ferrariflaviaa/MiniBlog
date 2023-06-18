@@ -7,6 +7,8 @@ import { AuthProvider } from './context/AuthContext'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { Login } from './pages/Login'
+import { CreatePost } from './pages/CreatePost'
+import { Dashboard } from './pages/Dashboard'
 import { Register } from './pages/Register'
 import { NavBar } from './components/NavBar';
 import { Footer } from './components/Footer';
@@ -36,6 +38,8 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/posts/create' element={<CreatePost />} />
+              <Route path='/dashboard' element={<Dashboard />} />
             </Routes>
           </div>
           <Footer />
