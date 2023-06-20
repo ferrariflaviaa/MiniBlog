@@ -4,6 +4,7 @@ import styles from './styles.module.css'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
+import { useInsertDocument } from "../../hooks/useInsertDocument";
 
 export const CreatePost = () => {
   const [title, setTitle] = useState("")
@@ -12,10 +13,45 @@ export const CreatePost = () => {
   const [tags, setTags] = useState([])
   const [formError, setFormError] = useState("")
 
+  const { user } = useAuthValue();
+
+  const navigate = useNavigate();
+
+  const { insertDocument, response } = useInsertDocument("posts");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormError("")
-  }
+    setFormError("");
+
+    // validate image
+    try {
+      new URL(image);
+    } catch (error) {
+      setFormError("A imagem precisa ser uma URL.");
+    }
+
+    // create tags array
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+
+    // check values
+    if (!title || !image || !tags || !body) {
+      setFormError("Por favor, preencha todos os campos!");
+    }
+
+    if(formError) return
+
+    insertDocument({
+      title,
+      image,
+      body,
+      tags: tagsArray,
+      uid: user.uid,
+      createdBy: user.displayName,
+    });
+
+    // redirect to home page
+    navigate("/");
+  };
 
   return (
     <div className={styles.create_post}>
@@ -38,10 +74,9 @@ export const CreatePost = () => {
         </label>
         <label>
           <span>Tags:</span>
-          <input type='text' name='tags' required placeholder='Insira as tags separadas por vírgula' onChange={(e) => setTags(e.target.value)} value={''} />
+          <input type='text' name='tags' required placeholder='Insira as tags separadas por vírgula' onChange={(e) => setTags(e.target.value)} value={tags} />
         </label>
-        <button className="btn">Criar post!</button>
-        {/* {!response.loading && <button className="btn">Criar post!</button>}
+        {!response.loading && <button className="btn">Criar post!</button>}
         {response.loading && (
           <button className="btn" disabled>
             Aguarde.. .
@@ -49,7 +84,7 @@ export const CreatePost = () => {
         )}
         {(response.error || formError) && (
           <p className="error">{response.error || formError}</p>
-        )} */}
+        )}
       </form>
     </div>
   )
