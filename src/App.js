@@ -7,6 +7,7 @@ import { AuthProvider } from './context/AuthContext'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
 import { Login } from './pages/Login'
+import { Search } from "./pages/Search";
 import { CreatePost } from './pages/CreatePost'
 import { Dashboard } from './pages/Dashboard'
 import { Register } from './pages/Register'
@@ -36,6 +37,7 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />
+              <Route path="/search" element={<Search />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
               <Route path='/register' element={!user ? <Register /> : <Navigate to='/' />} />
               <Route path='/posts/create' element={user ? <CreatePost /> : <Navigate to='/' />} />
