@@ -7,17 +7,21 @@ import { PostDetail } from "../../components/PostDetail";
 import { Link } from "react-router-dom";
 
 import React from 'react'
+import { useQuery } from "../../hooks/useQuery";
 
 export const Search = () => {
-  const { documents: posts } = useFetchDocuments("posts", "search");
+  const query = useQuery();
+  const search = query.get("q");
+  const { documents: posts } = useFetchDocuments("posts", search)
+  
   return (
     <div className={styles.search_container}>
-      <h1>Resultados encontrados para: {"search"}</h1>
+      <h1>Resultados encontrados para: {search}</h1>
       <div>
         {posts && posts.length === 0 && (
           <>
-            <p>Não foram encontrados posts a partir da sua busca</p>
-            <Link to="/" className="btn btn-">
+            <p>Não foram encontrados posts a partir da sua busca...</p>
+            <Link to="/" className="btn btn-dark">
               Voltar
             </Link>
           </>
