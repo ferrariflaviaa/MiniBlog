@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  width: 100%;
 }
 
 input::placeholder,
@@ -78,11 +79,22 @@ textarea::placeholder {
 }
 
 .btn.btn-dark {
-  background-color: #000;
-  border-radius: 0;
+  background-color: #012;
+  border-radius: 6px;
+  text-align: center;
+
+  @media (max-width: 720px) {
+    width: 100px;
+    padding: 10px 10px;
+    font-size: 0.8rem;
+  }
+  @media (max-width: 490px) {
+    width: 80px;
+    padding: 6px 6px;
+  }
 }
 
-.btn.btn-outline {
+/* .btn.btn-outline {
   background-color: transparent;
   border-radius: 0;
   color: #000;
@@ -91,13 +103,13 @@ textarea::placeholder {
 }
 
 .btn:hover {
-  background-color: #0f730c;
+  background-color: #015;
   color: #fff;
 }
 
 .btn.btn-outline:hover {
   background-color: #000;
-}
+} */
 
 .btn.btn-danger:hover {
   background-color: #dc3545;

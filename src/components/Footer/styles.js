@@ -19,6 +19,20 @@ export const CustomFooterContainer = styled.div`
     padding: 0.5rem 0.2rem;
   }
 
+  @media (max-width: 720px) {
+      h1{
+        font-size: 1rem;
+      }
+      p{
+        font-size: 0.6rem;
+      }
+      padding: 0;
+      margin: 0;
+    }
+    @media (max-width: 490px) {
+      font-size: 0.4rem;
+    }
+
 
 
 `

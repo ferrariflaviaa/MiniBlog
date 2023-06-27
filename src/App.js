@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from "firebase/auth";
 import { useAuthentication } from './hooks/useAuthentication'
@@ -31,11 +30,11 @@ function App() {
     return <p>Carregando...</p>
   }
   return (
-    <div className='App'>
+    <div>
       <AuthProvider value={{ user }}>
         <BrowserRouter>
           <NavBar />
-          <div className="container">
+          <div>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/about' element={<About />} />

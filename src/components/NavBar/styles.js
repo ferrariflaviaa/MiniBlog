@@ -7,10 +7,19 @@ background-color: #2A3647;
 color: #fff;
 justify-content: space-between;
 align-items: center;
-padding: 0.5em 2em;
+padding: 0.5rem 2rem;
 
 .brand{
   font-size:1.2em;
+  @media (max-width: 720px) {
+      text-align: center;
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    @media (max-width: 490px) {
+      font-size: 0.5rem;
+    }
 }
 
 .brand span{
@@ -21,6 +30,17 @@ padding: 0.5em 2em;
 .links_list{
   display: flex;
   list-style: none;
+
+  @media (max-width: 720px) {
+      text-align: center;
+      font-size: 0.5rem;
+      padding: 0;
+      margin: 0;
+    }
+    @media (max-width: 490px) {
+      font-size: 0.4rem;
+    }
+
 }
 
 .links_list li{
