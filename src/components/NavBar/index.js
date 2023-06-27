@@ -1,32 +1,32 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from "./styles.module.css";
 import { useAuthentication } from "../../hooks/useAuthentication";
 import { useAuthValue } from "../../context/AuthContext";
+import { CustomNavBarContainer } from './styles';
 
 export const NavBar = () => {
   const { logout } = useAuthentication();
   const { user } = useAuthValue();
   return (
-    <nav className={styles.navbar}>
-      <NavLink to='/' className={styles.brand}>
+    <CustomNavBarContainer>
+      <NavLink to='/' className="brand">
         Mini <span>Blog</span>
       </NavLink>
-      <ul className={styles.links_list}>
+      <ul className="links_list">
         <li>
-          <NavLink to='/' className={({ isActive }) => (isActive ? styles.active : "")}>
+          <NavLink to='/' className={({ isActive }) => (isActive ? "active" : "")}>
             Home
           </NavLink>
         </li>
         {!user && (
           <>
             <li>
-              <NavLink to='/login' className={({ isActive }) => (isActive ? styles.active : "")}>
+              <NavLink to='/login' className={({ isActive }) => (isActive ? "active" : "")}>
                 Entrar
               </NavLink>
             </li>
             <li>
-              <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : "")}>
+              <NavLink to='/register' className={({ isActive }) => (isActive ? "active" : "")}>
                 Cadastrar
               </NavLink>
             </li>
@@ -37,7 +37,7 @@ export const NavBar = () => {
             <li>
               <NavLink
                 to="/posts/create"
-                className={({ isActive }) => (isActive ? styles.active : "")}
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Novo post
               </NavLink>
@@ -45,7 +45,7 @@ export const NavBar = () => {
             <li>
               <NavLink
                 to="/dashboard"
-                className={({ isActive }) => (isActive ? styles.active : "")}
+                className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Dashboard
               </NavLink>
@@ -53,7 +53,7 @@ export const NavBar = () => {
           </>
         )}
         <li>
-          <NavLink to='/about' className={({ isActive }) => (isActive ? styles.active : "")}>
+          <NavLink to='/about' className={({ isActive }) => (isActive ? "active" : "")}>
             Sobre
           </NavLink>
         </li>
@@ -61,6 +61,6 @@ export const NavBar = () => {
           <li onClick={logout}>Sair</li>
         )}
       </ul>
-    </nav>
+    </CustomNavBarContainer>
   )
 }
