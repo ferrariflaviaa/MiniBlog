@@ -1,6 +1,5 @@
 import React from 'react'
-import styles from './styles.module.css'
-
+import {CustomCreatePost} from './styles'
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
@@ -38,7 +37,7 @@ export const CreatePost = () => {
       setFormError("Por favor, preencha todos os campos!");
     }
 
-    if(formError) return
+    if (formError) return
 
     insertDocument({
       title,
@@ -54,12 +53,13 @@ export const CreatePost = () => {
   };
 
   return (
-    <div className={styles.create_post}>
+    <CustomCreatePost>
       <h2>
-        Cria post
+        Formulário de Publicação
       </h2>
-      <p>Escreva sobre o que quiser e compartilhe o seu conhecimento!</p>
-      <form onSubmit={handleSubmit }>
+      <p>Liberte sua criatividade e compartilhe seus pensamentos no nosso formulário de criação de postagens.
+        <br />Deixe sua voz ser ouvida enquanto você escreve sobre seus tópicos favoritos e compartilha seu conhecimento com nossa comunidade online</p>
+      <form onSubmit={handleSubmit}>
         <label>
           <span>Título:</span>
           <input type="text" name='text' required placeholder='Pense num bom título...' onChange={(e) => setTitle(e.target.value)} value={title} />
@@ -76,7 +76,7 @@ export const CreatePost = () => {
           <span>Tags:</span>
           <input type='text' name='tags' required placeholder='Insira as tags separadas por vírgula' onChange={(e) => setTags(e.target.value)} value={tags} />
         </label>
-        {!response.loading && <button className="btn">Criar post!</button>}
+        {!response.loading && <button className="btnCreatePost">Criar post!</button>}
         {response.loading && (
           <button className="btn" disabled>
             Aguarde.. .
@@ -86,6 +86,6 @@ export const CreatePost = () => {
           <p className="error">{response.error || formError}</p>
         )}
       </form>
-    </div>
+    </CustomCreatePost>
   )
 }
