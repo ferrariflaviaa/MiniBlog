@@ -76,7 +76,7 @@ export const CreatePost = () => {
           <span>Tags:</span>
           <input type='text' name='tags' required placeholder='Insira as tags separadas por vírgula' onChange={(e) => setTags(e.target.value)} value={tags} />
         </label>
-        {!response.loading && <button className="btnCreatePost">Criar post!</button>}
+        {!response.loading && <button className="btnCreatePost">Criar!</button>}
         {response.loading && (
           <button className="btn" disabled>
             Aguarde.. .

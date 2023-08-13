@@ -1,13 +1,13 @@
-import { styled } from "styled-components";
+import styled from 'styled-components'
 
-export const CustomCreatePost = styled.div`
+export const CustomEditPost = styled.div`
 text-align: center;
 
 h2{
   font-size: 2em;
 }
 
-p {
+p{
   color: #aaa;
   margin-bottom: 2em;
 }
@@ -18,7 +18,18 @@ input, textarea{
   border-radius: 8px;
 }
 
- .btnCreatePost {
+.preview_title {
+  margin-bottom: 0.2em;
+  color: #000;
+  font-weight: bold;
+}
+
+.image_preview {
+  max-width: 100%;
+  margin-bottom: 1em;
+}
+
+.btnEditPost {
     text-align: center;
     width: 311px;
     height: 60px;
@@ -36,6 +47,10 @@ input, textarea{
       color: #000;
     }
   }
-
 `
+
+
+
+
+
 

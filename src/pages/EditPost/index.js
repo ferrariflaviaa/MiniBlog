@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import { CustomEditPost } from "./styles.js";
 
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from "react-router-dom";
@@ -67,11 +67,11 @@ export const EditPost = () => {
   };
 
   return (
-    <div className={styles.edit_post}>
+    <CustomEditPost>
       {post && (
         <>
-          <h2>Editando post: {post.title}</h2>
-          <p>Altere os dados do post como desejar</p>
+          <h2>Editando publicação: {post.title}</h2>
+          <p>Altere os dados da publicação como desejar</p>
           <form onSubmit={handleSubmit}>
             <label>
               <span>Título:</span>
@@ -95,9 +95,9 @@ export const EditPost = () => {
                 value={image}
               />
             </label>
-            <p className={styles.preview_title}>Preview da imagem atual:</p>
+            <p className="preview_title">Preview da imagem atual:</p>
             <img
-              className={styles.image_preview}
+              className="image_preview"
               src={post.image}
               alt={post.title}
             />
@@ -122,7 +122,7 @@ export const EditPost = () => {
                 value={tags}
               />
             </label>
-            {!response.loading && <button className="btn">Editar</button>}
+            {!response.loading && <button className="btnEditPost">Salvar</button>}
             {response.loading && (
               <button className="btn" disabled>
                 Aguarde.. .
@@ -134,6 +134,6 @@ export const EditPost = () => {
           </form>
         </>
       )}
-    </div>
+    </CustomEditPost>
   );
 }
