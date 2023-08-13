@@ -1,53 +1,53 @@
 import React from 'react'
-import styles from './styles.module.css'
 
 import { Link } from "react-router-dom";
 
 import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useDeleteDocument } from "../../hooks/useDeleteDocument";
+import { CustomDashboard } from './styles';
 
 export const Dashboard = () => {
   const { user } = useAuthValue();
   const uid = user.uid;
 
   const { documents: posts } = useFetchDocuments("posts", null, uid);
-  
+
   const { deleteDocument } = useDeleteDocument("posts");
-  
+
   return (
-    <div className={styles.dashboard}>
+    <CustomDashboard>
       <h1>Dashboard</h1>
-      <p>Gerencie os seus posts</p>
+      <p>Gerencie sua publicações</p>
       {posts && posts.length === 0 ? (
-        <div className={styles.noposts}>
+        <div className="noposts">
           <p>Não foram encontrados posts</p>
           <Link to="/posts/create" className="btn">
             Criar primeiro post
           </Link>
         </div>
       ) : (
-        <div className={styles.post_header}>
+        <div className="post_header">
           <span>Título</span>
           <span>Ações</span>
         </div>
       )}
       {posts && posts.map((post) => (
-        <div className={styles.post_row} key={post.id}>
+        <div className="post_row" key={post.id}>
           <p>{post.title}</p>
-          <div className={styles.actions}>
-            <Link to={`/posts/${post.id}`} className='btn btn-outline'>
+          <div className="actions">
+            <Link to={`/posts/${post.id}`} className='btnDashboard'>
               Ver
             </Link>
-            <Link to={`/posts/edit/${post.id}`} className='btn btn-outline'>
+            <Link to={`/posts/edit/${post.id}`} className='btnDashboard'>
               Editar
             </Link>
-            <button onClick={()=> deleteDocument(post.id)} className='btn' btn-outline btn-danger>
+            <Link onClick={() => deleteDocument(post.id)} className='btnDashboard'>
               Excluir
-            </button>
+            </Link>
           </div>
         </div>
       ))}
-    </div>
+    </CustomDashboard>
   )
 }
