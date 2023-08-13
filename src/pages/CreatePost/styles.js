@@ -20,8 +20,8 @@ input, textarea{
 
  .btnCreatePost {
     text-align: center;
-    width: 50%;
-    height: 30px;
+    width: 311px;
+    height: 60px;
     border: 1px solid #000;
     padding: 6px;
     border-radius: 20px;
